@@ -7,26 +7,23 @@ app = Flask(__name__)
 @app.route("/<state>")
 def update_robot(state=None):
     if state == 'forward':
-        eh.motor.one.backwards(100)
-        eh.motor.two.forwards(100)
+        eh.motor.forwards(100)
     if state == 'back':
-        eh.motor.one.forwards(100)
-        eh.motor.two.backwards(100)
+        eh.motor.backwards(100)
     if state == 'left':
         eh.motor.two.stop()
-        eh.motor.one.backwards(100)
+        eh.motor.one.forwards(100)
     if state == 'right':
         eh.motor.one.stop()
         eh.motor.two.forwards(100)
     if state == 'stop':
-        eh.motor.one.stop()
-        eh.motor.two.stop()
+        eh.motor.stop()
     if state == 'anti-clockwise':
         eh.motor.one.backwards(100)
-        eh.motor.two.backwards(100)
+        eh.motor.two.forwards(100)
     if state == 'clockwise':
         eh.motor.one.forwards(100)
-        eh.motor.two.forwards(100)
+        eh.motor.two.backwards(100)
     template_data = {
         'title' : state,
     }
